@@ -9,10 +9,12 @@ A free and easy-to-use online tool to add **patterns, noise, and texture effects
 * Add texture overlays:
 
   * Noise / Grain
+  * Crosshatch
   * Dots
   * Lines
   * Waves
   * Hexagon patterns
+  * Circuit
 
 * Fully customizable:
 
@@ -23,12 +25,14 @@ A free and easy-to-use online tool to add **patterns, noise, and texture effects
 
 * Apply color styles:
 
-  * Retro effects
+  * Noise
   * Grayscale filter
-  * Pink / Blue / Orange tones
-  * Custom color blending
+  * Brightness
+  * Contrast
+  * Custom color overlay
 
 * Works directly in the browser (no installation required)
+* Export PNG
 
 ---
 
@@ -42,20 +46,7 @@ A free and easy-to-use online tool to add **patterns, noise, and texture effects
 
 ---
 
-## 🌐 Live Demo
 
-👉 [Add your live demo link here]
-
----
-
-## 📦 Installation (Optional for Developers)
-
-```bash
-git clone https://github.com/your-username/your-repo-name.git
-cd your-repo-name
-npm install
-npm run dev
-```
 
 ---
 
@@ -76,16 +67,6 @@ Unlike heavy design software, this tool is:
 
 ---
 
-## 🛠️ Tech Stack
-
-* [Add your stack: e.g., React, Canvas API, WebGL, etc.]
-
----
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to fork the repo, create a branch, and submit a pull request.
-
 ---
 
 ## 📄 License
@@ -102,4 +83,5 @@ If you find this tool useful, please consider giving it a ⭐ on GitHub!
 
 ## 🔗 Connect
 
-[Add your portfolio / LinkedIn here]
+LinkedIn: https://www.linkedin.com/in/kapilsingh13/
+Portfolio: https://kapilux.github.io/kapil/
