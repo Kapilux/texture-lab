@@ -46,10 +46,6 @@ A free and easy-to-use online tool to add **patterns, noise, and texture effects
 
 ---
 
-
-
----
-
 ## 🔍 SEO Keywords (for discoverability)
 
 image texture generator, add noise to image, grain effect tool, image pattern generator, retro image filter, grayscale image editor, online image editor free, texture overlay tool, design texture generator
@@ -66,7 +62,8 @@ Unlike heavy design software, this tool is:
 * Beginner-friendly
 
 ---
-
+## Short URL
+https://tinyurl.com/y4tr2vu4
 ---
 
 ## 📄 License
