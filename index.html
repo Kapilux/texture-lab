@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TextureLab</title>
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta name="referrer" content="no-referrer"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles/main.css"/>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <div class="logo-icon">&#10022;</div>
+      <div class="logo-name"><span>Texture</span>Lab</div>
+      <div class="logo-badge">v1</div>
+    </div>
+    <div class="header-status">
+      <div class="header-status-dot" id="status-dot"></div>
+      <span id="status-text">No image loaded</span>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-ghost" id="btn-reset" disabled>&#8634; Reset</button>
+      <button class="btn btn-primary" id="btn-download" disabled>&#8595; Export PNG</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="canvas-area">
+
+      <div id="upload-zone">
+        <input type="file" id="file-input" accept="image/*" style="display:none"/>
+        <svg id="uz-svg" xmlns="http://www.w3.org/2000/svg">
+          <rect id="uz-border" x="1.5" y="1.5" rx="19" ry="19"/>
+        </svg>
+        <div class="upload-icon">&#128444;&#65039;</div>
+        <p class="upload-title">Drop an image here</p>
+        <p class="upload-sub">or <a id="btn-browse" href="#">browse files</a> to get started</p>
+        <div class="upload-formats">
+          <span>PNG</span><span>JPG</span><span>WEBP</span><span>GIF</span>
+        </div>
+      </div>
+
+      <div id="preview-area">
+        <div class="canvas-panel">
+          <div class="canvas-label"><div class="canvas-label-dot"></div>Original</div>
+          <canvas id="canvas-original"></canvas>
+        </div>
+        <div class="canvas-divider">
+          <div class="divider-line"></div>
+          <div class="divider-chip">&#8594;</div>
+          <div class="divider-line"></div>
+        </div>
+        <div class="canvas-panel">
+          <div class="canvas-label"><div class="canvas-label-dot"></div>Preview</div>
+          <canvas id="canvas-preview"></canvas>
+        </div>
+      </div>
+
+    </section>
+
+    <aside class="sidebar">
+      <div class="sidebar-body">
+
+        <div class="section-card">
+          <div class="section-title">Filter Type</div>
+          <div class="filter-grid" id="filter-grid">
+            <button class="filter-btn active" data-filter="none">None</button>
+            <button class="filter-btn" data-filter="crosshatch">Crosshatch</button>
+            <button class="filter-btn" data-filter="dots">Dots</button>
+            <button class="filter-btn" data-filter="lines">Lines</button>
+            <button class="filter-btn" data-filter="weave">Weave</button>
+            <button class="filter-btn" data-filter="grain">Grain</button>
+            <button class="filter-btn" data-filter="hexagons">Hexagons</button>
+            <button class="filter-btn" data-filter="circuit">Circuit</button>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-title">Adjustments</div>
+          <div class="slider-group">
+            <div class="slider-row">
+              <div class="slider-meta"><span class="slider-name">Intensity</span><span class="slider-val" id="val-intensity">50</span></div>
+              <input type="range" id="sl-intensity" min="0" max="100" value="50"/>
+            </div>
+            <div class="slider-row">
+              <div class="slider-meta"><span class="slider-name">Scale</span><span class="slider-val" id="val-scale">20</span></div>
+              <input type="range" id="sl-scale" min="4" max="80" value="20"/>
+            </div>
+            <div class="slider-row">
+              <div class="slider-meta"><span class="slider-name">Angle</span><span class="slider-val" id="val-angle">0&deg;</span></div>
+              <input type="range" id="sl-angle" min="0" max="180" value="0"/>
+            </div>
+            <div class="slider-row">
+              <div class="slider-meta"><span class="slider-name">Zoom</span><span class="slider-val" id="val-zoom">1.0&times;</span></div>
+              <input type="range" id="sl-zoom" min="50" max="300" value="100"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-title">Image Effects</div>
+          <div class="slider-group">
+            <div class="slider-row">
+              <div class="slider-meta"><span class="slider-name">Grayscale</span><span class="slider-val" id="val-grayscale">0%</span></div>
+              <input type="range" id="sl-grayscale" min="0" max="100" value="0"/>
+            </div>
+            <div class="slider-row">
+              <div class="slider-meta"><span class="slider-name">Noise</span><span class="slider-val" id="val-noise">0</span></div>
+              <input type="range" id="sl-noise" min="0" max="100" value="0"/>
+            </div>
+            <div class="slider-row">
+              <div class="slider-meta"><span class="slider-name">Brightness</span><span class="slider-val" id="val-brightness">100%</span></div>
+              <input type="range" id="sl-brightness" min="20" max="200" value="100"/>
+            </div>
+            <div class="slider-row">
+              <div class="slider-meta"><span class="slider-name">Contrast</span><span class="slider-val" id="val-contrast">100%</span></div>
+              <input type="range" id="sl-contrast" min="20" max="200" value="100"/>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card">
+          <div class="section-title">Color Overlay</div>
+          <div class="swatch-row" id="color-swatches">
+            <button class="swatch swatch-none active" data-color="none" title="None"></button>
+            <button class="swatch" data-color="#ff6b35" style="background:#ff6b35" title="Ember"></button>
+            <button class="swatch" data-color="#00d4ff" style="background:#00d4ff" title="Cyan"></button>
+            <button class="swatch" data-color="#a8ff3e" style="background:#a8ff3e" title="Acid"></button>
+            <button class="swatch" data-color="#ff3ea8" style="background:#ff3ea8" title="Rose"></button>
+            <button class="swatch" data-color="#f5e642" style="background:#f5e642" title="Solar"></button>
+            <button class="swatch" data-color="#c084fc" style="background:#c084fc" title="Violet"></button>
+          </div>
+          <div class="slider-row">
+            <div class="slider-meta"><span class="slider-name">Mix</span><span class="slider-val" id="val-overlay">0%</span></div>
+            <input type="range" id="sl-overlay" min="0" max="80" value="0"/>
+          </div>
+        </div>
+
+      </div>
+      <div class="sidebar-footer">
+        <div class="footer-left">
+          <div class="footer-label">Dimensions</div>
+          <div class="footer-val" id="status-dims">&#8212;</div>
+        </div>
+        <div class="footer-right">
+          <div id="status-filter-badge">none</div>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <script src="scripts/security.js"></script>
+  <script src="scripts/filters.js"></script>
+  <script src="scripts/app.js"></script>
+</body>
+</html>
